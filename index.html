@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Stomatološka ordinacija — primer sajta</title>
+<meta name="description" content="Primer sajta za stomatološku ordinaciju: usluge, tim, galerija i online zakazivanje.">
+<style>
+:root{
+  --ink:#12211f; --muted:#5b6b68; --line:#e3e7e2;
+  --bg:#ffffff; --sand:#f6f2ea; --teal:#0f3d3e; --teal-soft:#1b7f79; --accent:#c9a227;
+  --r:18px; --wrap:1180px;
+  --font:"Inter","Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+  --serif:Georgia,"Times New Roman",serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--font);color:var(--ink);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 22px}
+section[id]{scroll-margin-top:86px}
+
+/* header */
+.hdr{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.hdr .wrap{display:flex;align-items:center;gap:18px;min-height:70px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.02em}
+.brand img{width:34px;height:34px;object-fit:contain}
+.brand .lm{width:34px;height:34px;border-radius:10px;background:var(--teal);color:#e6d7a6;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:19px}
+.brand span{display:block;font-size:11px;font-weight:500;color:var(--muted);letter-spacing:.14em;text-transform:uppercase}
+.nav{display:none;gap:26px;margin-left:auto;font-size:15px;color:var(--muted)}
+.nav a:hover{color:var(--teal)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:999px;font-weight:600;font-size:15px;border:1px solid transparent;transition:.2s}
+.btn-primary{background:var(--teal);color:#fff}
+.btn-primary:hover{background:#0b2f30}
+.btn-ghost{border-color:var(--line);color:var(--ink)}
+.btn-ghost:hover{border-color:var(--teal);color:var(--teal)}
+.hdr .btn{margin-left:auto;font-size:14px;padding:9px 15px}
+@media(min-width:880px){.nav{display:flex}.hdr .btn{margin-left:0}}
+
+/* hero */
+.hero{position:relative;min-height:clamp(520px,76vh,720px);display:flex;align-items:center;color:#fff;overflow:hidden}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,rgba(9,32,33,.92) 0%,rgba(9,32,33,.72) 46%,rgba(9,32,33,.28) 100%)}
+.hero .wrap{position:relative;z-index:2;padding-top:64px;padding-bottom:64px}
+.eyebrow{display:inline-block;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#e6d7a6;margin-bottom:14px}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(34px,5.2vw,60px);line-height:1.08;margin:0 0 16px;max-width:15ch}
+.hero p{font-size:clamp(16px,1.5vw,19px);max-width:52ch;color:#dbe6e2;margin:0 0 26px}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px}
+.hero .btn-ghost{border-color:rgba(255,255,255,.4);color:#fff}
+.hero .btn-ghost:hover{background:rgba(255,255,255,.1);color:#fff;border-color:#fff}
+
+/* facts */
+.facts{background:var(--teal);color:#eaf2ef}
+.facts .wrap{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(255,255,255,.14);padding:0}
+.fact{background:var(--teal);padding:26px 22px}
+.fact b{display:block;font-family:var(--serif);font-size:clamp(26px,3vw,38px);font-weight:400;color:#fff;line-height:1.1}
+.fact span{font-size:13px;letter-spacing:.04em;color:#a9c4bd}
+@media(min-width:820px){.facts .wrap{grid-template-columns:repeat(4,1fr)}}
+
+/* section shell */
+.sec{padding:clamp(56px,7vw,96px) 0}
+.sec-head{max-width:62ch;margin-bottom:38px}
+.sec-head h2{font-family:var(--serif);font-weight:400;font-size:clamp(26px,3.4vw,40px);line-height:1.15;margin:0 0 12px}
+.sec-head p{color:var(--muted);margin:0;font-size:16px}
+/* services */
+.grid-services{display:grid;grid-template-columns:1fr;gap:18px}
+@media(min-width:640px){.grid-services{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:980px){.grid-services{grid-template-columns:repeat(4,1fr)}}
+.card{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:#fff;transition:.25s}
+.card:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(15,61,62,.08)}
+.card img{aspect-ratio:4/3;object-fit:cover;width:100%}
+.card h3{margin:16px 18px 6px;font-size:17px;letter-spacing:.01em}
+.card p{margin:0 18px 20px;font-size:14.5px;color:var(--muted)}
+
+/* team */
+.team{background:var(--sand)}
+.grid-team{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+@media(min-width:760px){.grid-team{grid-template-columns:repeat(4,1fr)}}
+.person{background:#fff;border-radius:var(--r);overflow:hidden;border:1px solid var(--line)}
+.person img{aspect-ratio:4/5;object-fit:cover;width:100%;object-position:top}
+.person .mono{aspect-ratio:4/5;width:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(160deg,#f4f1e9,#e3eae5);color:var(--teal);font-family:var(--serif);font-size:52px;letter-spacing:.06em}
+.person div{padding:14px 16px 18px}
+.person b{display:block;font-size:15.5px}
+.person span{display:block;font-size:13px;color:var(--muted);margin-top:4px;line-height:1.4}
+.person.lead{grid-column:span 2}
+@media(min-width:760px){.person.lead{grid-column:span 1}}
+
+/* gallery */
+.grid-gal{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+@media(min-width:820px){.grid-gal{grid-template-columns:repeat(4,1fr)}}
+.grid-gal img{border-radius:14px;aspect-ratio:4/3;object-fit:cover;width:100%}
+
+/* tourism */
+.split{display:grid;gap:32px;align-items:center}
+@media(min-width:900px){.split{grid-template-columns:1.05fr .95fr;gap:56px}}
+.split img{border-radius:var(--r);aspect-ratio:3/2;object-fit:cover;width:100%}
+.split h2{font-family:var(--serif);font-weight:400;font-size:clamp(26px,3.2vw,38px);margin:0 0 14px;line-height:1.15}
+.split p{color:var(--muted);margin:0 0 14px}
+
+/* contact */
+.contact{background:var(--teal);color:#eaf2ef}
+.contact h2{font-family:var(--serif);font-weight:400;font-size:clamp(26px,3.4vw,40px);margin:0 0 10px;color:#fff}
+.contact .lead{color:#b7ccc6;max-width:46ch;margin:0 0 28px}
+.cgrid{display:grid;gap:26px}
+@media(min-width:820px){.cgrid{grid-template-columns:1.1fr .9fr;gap:60px}}
+.cline{display:flex;gap:14px;padding:16px 0;border-top:1px solid rgba(255,255,255,.14)}
+.cline:last-child{border-bottom:1px solid rgba(255,255,255,.14)}
+.cline b{display:block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#8fb2ab;margin-bottom:3px}
+.cline a,.cline p{margin:0;font-size:17px;color:#fff}
+.box{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:var(--r);padding:26px}
+.box p{margin:0 0 18px;color:#c8d9d4;font-size:15px}
+.box .btn-primary{background:var(--accent);color:#1c1a10}
+.box .btn-primary:hover{background:#b8951f}
+.ftr{background:#0a2a2b;color:#8fb2ab;font-size:13.5px;padding:26px 0}
+.ftr .wrap{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
+
+/* booking */
+.book{background:var(--sand)}
+.book .split{align-items:start}
+.book h2{font-family:var(--serif);font-weight:400;font-size:clamp(26px,3.2vw,38px);margin:0 0 14px;line-height:1.15}
+.book p{color:var(--muted)}
+.book ul{list-style:none;padding:0;margin:22px 0 0}
+.book li{position:relative;padding-left:26px;margin-bottom:10px;color:var(--muted);font-size:15px}
+.book li::before{content:"";position:absolute;left:0;top:7px;width:12px;height:12px;border-radius:50%;background:var(--accent)}
+.form{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:26px;box-shadow:0 18px 50px rgba(15,61,62,.07)}
+.form h3{margin:0 0 4px;font-size:19px}
+.form .hint{margin:0 0 20px;font-size:14px;color:var(--muted)}
+.field{margin-bottom:14px}
+.field label{display:block;font-size:13px;font-weight:600;margin-bottom:6px}
+.field input,.field select,.field textarea{width:100%;font:inherit;font-size:15px;color:var(--ink);background:#fbfbf9;
+  border:1px solid var(--line);border-radius:10px;padding:11px 12px;outline:none}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--teal-soft);background:#fff}
+.field textarea{resize:vertical;min-height:74px}
+.form .btn-primary{width:100%;justify-content:center;margin-top:6px}
+.form .note{font-size:12.5px;color:var(--muted);margin:12px 0 0;text-align:center}
+
+</style>
+</head>
+<body>
+<header class="hdr">
+  <div class="wrap">
+    <a class="brand" href="#top">
+      <div class="lm">O</div>
+      <div>Ordinacija<span>Novi Sad</span></div>
+    </a>
+    <nav class="nav">
+      <a href="#usluge">Usluge</a>
+      <a href="#tim">Naš tim</a>
+      <a href="#ordinacija">Ordinacija</a>
+      <a href="#zakazivanje">Zakazivanje</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+    <a class="btn btn-primary" href="tel:+381210000000">021 000 0000</a>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <img src="assets/img/slider/1.jpg" alt="Ordinacija u Novom Sadu">
+  <div class="wrap">
+    <div class="eyebrow">Novi Sad · primer sajta</div>
+    <h1>Stomatološka ordinacija koja traje tri decenije.</h1>
+    <p>Od 1995. godine u istom kraju grada, sa istim pristupom: pregled kod specijaliste, jasan plan lečenja i termin koji se poštuje.</p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="tel:+381216363847">Zakažite pregled</a>
+      <a class="btn btn-ghost" href="#tim">Upoznajte tim</a>
+    </div>
+  </div>
+</section>
+
+<section class="facts">
+  <div class="wrap">
+    <div class="fact"><b>1995.</b><span>godina osnivanja</span></div>
+    <div class="fact"><b>7</b><span>lekara u timu</span></div>
+    <div class="fact"><b>2</b><span>ordinacije i hirurška sala</span></div>
+    <div class="fact"><b>2.000+</b><span>pacijenata u evidenciji</span></div>
+  </div>
+</section>
+
+<section class="sec" id="usluge">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Sve na jednom mestu</h2>
+      <p>Od preventive i lečenja zuba do implantologije i protetike — bez upućivanja u drugu ustanovu.</p>
+    </div>
+    <div class="grid-services">
+      <article class="card">
+        <img src="assets/img/implantati.jpg" alt="Zubni implantati">
+        <h3>Zubni implantati</h3>
+        <p>Ugradnja implantata i augmentacija kosti, uz rendgensku kontrolu na svakom koraku.</p>
+      </article>
+      <article class="card">
+        <img src="assets/img/krunice.jpg" alt="Bezmetalne krunice">
+        <h3>Bezmetalne krunice</h3>
+        <p>Keramičke nadoknade koje čuvaju prirodnu boju i providnost zuba.</p>
+      </article>
+      <article class="card">
+        <img src="assets/img/beljenje.jpg" alt="Beljenje zuba">
+        <h3>Beljenje zuba</h3>
+        <p>Estetsko izbeljivanje po protokolu, sa procenom stanja gleđi pre tretmana.</p>
+      </article>
+      <article class="card">
+        <img src="assets/img/kompozitne.jpg" alt="Kompozitne plombe">
+        <h3>Kompozitne plombe</h3>
+        <p>Savremeni ispuni u boji zuba, uz minimalno uklanjanje zdravog tkiva.</p>
+      </article>
+      <article class="card">
+        <img src="assets/img/protetika.jpg" alt="Protetika">
+        <h3>Protetika</h3>
+        <p>Krunice, mostovi i nadoknade izrađene po otisku i probi, ne „na oko“.</p>
+      </article>
+      <article class="card">
+        <img src="assets/img/parcijalne.jpg" alt="Parcijalne proteze">
+        <h3>Parcijalne proteze</h3>
+        <p>Nadoknada izgubljenih zuba kod pacijenata koji zadržavaju preostale.</p>
+      </article>
+      <article class="card">
+        <img src="assets/img/parodont.jpg" alt="Parodontologija">
+        <h3>Parodontologija</h3>
+        <p>Lečenje desni i potpornog tkiva — osnova za svaku trajnu nadoknadu.</p>
+      </article>
+      <article class="card">
+        <img src="assets/img/os1-1.jpg" alt="Oralna hirurgija">
+        <h3>Oralna hirurgija</h3>
+        <p>Intervencije u sopstvenoj hirurškoj sali, kod specijaliste oralne hirurgije.</p>
+      </article>
+    </div>
+  </div>
+</section>
+<section class="sec team" id="tim">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Tim koji vas vodi kroz lečenje</h2>
+      <p>Svaki pregled obavlja lekar specijalista za svoju oblast — od dečije stomatologije do oralne hirurgije.</p>
+    </div>
+    <div class="grid-team">
+      <article class="person lead">
+        <div class="mono">OH</div>
+        <div><b>Oralna hirurgija</b><span>Osnivač ordinacije, specijalista sa 30 godina prakse</span></div>
+      </article>
+      <article class="person">
+        <div class="mono">DS</div>
+        <div><b>Dečija stomatologija</b><span>Specijalista preventivne stomatologije</span></div>
+      </article>
+      <article class="person">
+        <div class="mono">EN</div>
+        <div><b>Endodoncija</b><span>Specijalista bolesti zuba</span></div>
+      </article>
+      <article class="person">
+        <div class="mono">BZ</div>
+        <div><b>Bolesti zuba</b><span>Terapija kanala i restauracija zuba</span></div>
+      </article>
+      <article class="person">
+        <div class="mono">OS</div>
+        <div><b>Opšta stomatologija</b><span>Pregledi, plombe i sanacija zuba</span></div>
+      </article>
+      <article class="person">
+        <div class="mono">PR</div>
+        <div><b>Preventiva</b><span>Kontrola, fluoridacija i saveti za decu</span></div>
+      </article>
+      <article class="person">
+        <div class="mono">PT</div>
+        <div><b>Protetika</b><span>Krunice, mostovi i nadoknade</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="ordinacija">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Prostor ordinacije</h2>
+      <p>Dve ordinacije i hirurška sala — intervencije koje zahtevaju posebne uslove rade se kod nas, bez odlaganja.</p>
+    </div>
+    <div class="grid-gal">
+      <img src="assets/img/ord1-1.jpg" alt="Ordinacija">
+      <img src="assets/img/ord1-3.jpg" alt="Radno mesto">
+      <img src="assets/img/ord2-1.jpg" alt="Ordinacija 2">
+      <img src="assets/img/ord1-4.jpg" alt="Detalj ordinacije">
+    </div>
+  </div>
+</section>
+
+<section class="sec" style="background:var(--sand)">
+  <div class="wrap split">
+    <div>
+      <h2>Dođete u Novi Sad i vratite se sa zdravim osmehom</h2>
+      <p>Novi Sad je univerzitetski i kulturni centar Srbije, lako dostupan iz zemlje i inostranstva. Pacijenti koji dolaze spolja dobijaju plan lečenja unapred, raspored termina za vreme boravka i kontrolu posle povratka.</p>
+      <p>Termin se zakazuje telefonom, a prvi pregled uključuje procenu stanja i predlog daljih koraka — bez obaveze da se lečenje započne istog dana.</p>
+      <a class="btn btn-primary" href="tel:+381216363847">Dogovorite termin</a>
+    </div>
+    <img src="assets/img/slider/2.jpg" alt="Ordinacija, Novi Sad">
+  </div>
+</section>
+
+<section class="sec book" id="zakazivanje">
+  <div class="wrap split">
+    <div>
+      <h2>Zakažite pregled bez čekanja na telefon</h2>
+      <p>Pošaljite zahtev i recepcija Vas poziva da potvrdi termin. Ako je u pitanju bol, pozovite direktno — primamo istog dana.</p>
+      <ul>
+        <li>Zahtev stiže recepciji odmah, bez instalacije aplikacija</li>
+        <li>Biramo termin prema Vašem rasporedu</li>
+        <li>Prvi pregled uključuje plan lečenja i procenu cene</li>
+      </ul>
+    </div>
+    <form class="form" onsubmit="event.preventDefault();this.querySelector('.note').textContent='Hvala — zahtev je zabeležen, recepcija Vas poziva.';">
+      <h3>Zahtev za termin</h3>
+      <p class="hint">Odgovaramo u roku od jednog radnog dana.</p>
+      <div class="field"><label for="ime">Ime i prezime</label><input id="ime" name="ime" placeholder="npr. Milica Jovanović" required></div>
+      <div class="field"><label for="tel">Telefon</label><input id="tel" name="tel" type="tel" placeholder="06x xxx xxxx" required></div>
+      <div class="field"><label for="usluga">Usluga</label>
+        <select id="usluga" name="usluga">
+          <option>Prvi pregled</option><option>Implantologija</option><option>Protetika</option>
+          <option>Beljenje zuba</option><option>Dečija stomatologija</option><option>Oralna hirurgija</option>
+        </select></div>
+      <div class="field"><label for="napomena">Napomena (opciono)</label><textarea id="napomena" name="napomena" placeholder="Kada Vam najviše odgovara termin"></textarea></div>
+      <button class="btn btn-primary" type="submit">Pošaljite zahtev</button>
+      <p class="note">Vaši podaci se koriste samo za zakazivanje termina.</p>
+    </form>
+  </div>
+</section>
+
+<section class="sec contact" id="kontakt">
+  <div class="wrap cgrid">
+    <div>
+      <h2>Kontakt</h2>
+      <p class="lead">Poseta se zakazuje telefonom. U slučaju bola ili potrebe za hirurškom intervencijom, javite se — primamo istog dana kada se najavite.</p>
+      <div class="cline">
+        <div><b>Adresa</b><p>Novi Sad</p></div>
+      </div>
+      <div class="cline">
+        <div><b>Telefon</b><a href="tel:+381210000000">021 000 0000</a></div>
+      </div>
+      <div class="cline">
+        <div><b>E-pošta</b><a href="mailto:kontakt@ordinacija.rs">kontakt@ordinacija.rs</a></div>
+      </div>
+    </div>
+    <div class="box">
+      <p>Ordinacija se nalazi odmah iza Limanske pijace. Za prvi dolazak dovoljno je da pozovete — termin dobijate po dogovoru.</p>
+      <a class="btn btn-primary" href="https://www.google.com/maps/search/?api=1&amp;query=Vojvo%C4%91anska+38+Novi+Sad" target="_blank" rel="noopener">Otvori mapu</a>
+    </div>
+  </div>
+</section>
+
+<footer class="ftr">
+  <div class="wrap">
+    <span>© Ordinacija — primer sajta, Novi Sad</span>
+    <span>Sadržaj sajta nije javna ponuda.</span>
+  </div>
+</footer>
+
+
+</body>
+</html>
